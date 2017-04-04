@@ -1,0 +1,134 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Buy Fruits and Vegetables directly from farmers">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Truce</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
+      <main class="mdl-layout__content">
+
+      <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" id="progressBar" style="display: block; margin-left: auto;margin-right: auto; margin-top:56px; margin-bottom:56px;"></div>
+      <div id="main_content" style="display: none;">
+        <div class="demo-back" style="width:100%">
+          <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="index.html" title="go back" role="button">
+            <i class="material-icons" role="presentation">arrow_back</i>
+          </a>
+
+          <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="0" id="cart_layout" style="float: right; margin-top: 6px; margin-right: 50px;">shopping_cart</div>
+
+        </div>
+        <div class="demo-blog__posts mdl-grid">
+          <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col" id="product_details">
+            
+          </div>
+
+          <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+            <a class="demo-nav__button" id="btn-previous">
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+              </button>
+              Previous
+            </a>
+            <div class="section-spacer"></div>
+            <a class="demo-nav__button" id="btn-next">
+              Next
+              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+              </button>
+            </a>
+          </nav>
+        </div>
+        <footer class="mdl-mini-footer">
+          <div class="mdl-mini-footer--left-section">
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
+              <span class="visuallyhidden">Twitter</span>
+            </button>
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
+              <span class="visuallyhidden">Facebook</span>
+            </button>
+            <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
+              <span class="visuallyhidden">Google Plus</span>
+            </button>
+          </div>
+          <div class="mdl-mini-footer--right-section">
+            <button class="mdl-mini-footer--social-btn social-btn__share">
+              <i class="material-icons" role="presentation">share</i>
+              <span class="visuallyhidden">share</span>
+            </button>
+          </div>
+        </footer>
+        </div>
+      </main>
+       <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+      <div class="mdl-layout__obfuscator"></div>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAmvSlofCLvIr61W7Pr8jTJQcPqgsmrgWY",
+        authDomain: "truce-web-app-87773.firebaseapp.com",
+        databaseURL: "https://truce-web-app-87773.firebaseio.com",
+        storageBucket: "truce-web-app-87773.appspot.com",
+        messagingSenderId: "177945679353"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="product.js"></script>
+  </body>
+</html>
