@@ -6,6 +6,7 @@ A materialized basic web app made for buying products, firebase is used to host 
 
 `Feature to try out`
 - As the data is hosted on firebase it get updated real time try adding products to cart using your desktop and check real time updates on mobile
+- As a new user login's on the app he will receive an automated mail which is written in firebase as a function
 - Try to make it as materialized and responsive as possible
 - More coming soon...
 
